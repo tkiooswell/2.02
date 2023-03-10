@@ -1,0 +1,35 @@
+#pragma once
+#include <iostream>
+#include <math.h>
+using namespace std;
+class EquationRoots {
+protected:
+	float a;
+	float b;
+public:
+	EquationRoots(float xK, float yK) : a{ xK }, b{ yK } {};
+};
+
+
+class Line : public EquationRoots {
+public:
+	Line(float aK, float bK) : EquationRoots(aK, bK) {};
+	void solve() {
+		 cout << "x = " <<  - b / a << endl;
+	}
+};
+
+class Line : public EquationRoots {
+	float c;
+public:
+	LineEquation(float xK, float yK, float cK) : EquationRoots(xK, yK), c{ cK } {};
+	void solve() {
+		int D = b * b - 4 * a * c;
+		if (D < 0)  cout << "eRROR";
+		if (D == 0) cout << "x = " << -b / 2 * a << endl;
+		if (D > 0) {
+			cout << "x1 = " << (-b + sqrt(D)) / 2 * a << endl;
+			cout << "x2 = " << (-b - sqrt(D)) / 2 * a << endl;
+		}
+	}
+};
